@@ -34,6 +34,28 @@ pipeline {
 		echo "Integration Test stage"
 			}
 		}
+
+	stage('Docker build image stage') {
+		steps{
+		//docker build -t java4raju/currency-exchange-microservice:$env.BUILD_TAG
+		script{
+			dockerImage = docker.build("docker build -t java4raju/currency-exchange-microservice:${env.BUILD_TAG}")
+		}
+			}
+		}
+		}
+	}
+
+	stage('Docker image push stage') {
+		steps{
+		script{
+			dockerImage.push();
+			dockerImage.push('latest');
+		}
+			}
+		}
+	}
+
 	}
 
 	post{
