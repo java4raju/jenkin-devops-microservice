@@ -39,12 +39,11 @@ pipeline {
 		steps{
 		//docker build -t java4raju/currency-exchange-microservice:$env.BUILD_TAG
 		script{
-			dockerImage = docker.build("docker build -t java4raju/currency-exchange-microservice:${env.BUILD_TAG}")
+			dockerImage = docker.build("java4raju/currency-exchange-microservice:${env.BUILD_TAG}")
 		}
 			}
 		}
-		}
-	}
+
 
 	stage('Docker image push stage') {
 		steps{
@@ -54,7 +53,7 @@ pipeline {
 		}
 			}
 		}
-	}
+	
 
 	}
 
