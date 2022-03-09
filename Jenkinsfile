@@ -35,6 +35,13 @@ pipeline {
 			}
 		}
 
+		stage('Package Stage') {
+		steps{
+		echo "Packaging stage"
+		sh "mvn package -DskipTests"
+			}
+		}
+
 	stage('Docker build image stage') {
 		steps{
 		//docker build -t java4raju/currency-exchange-microservice:$env.BUILD_TAG
